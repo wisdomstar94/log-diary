@@ -1,0 +1,104 @@
+{
+  "count": 11,
+  "images": [
+    {
+      "file": "header-3840x1646.png",
+      "width": 3840,
+      "height": 1646,
+      "format": "PNG",
+      "mode": "RGB",
+      "alpha": false,
+      "bytes": 4759113
+    },
+    {
+      "file": "search-results-3840x2560.png",
+      "width": 3840,
+      "height": 2560,
+      "format": "PNG",
+      "mode": "RGB",
+      "alpha": false,
+      "bytes": 4615163
+    },
+    {
+      "file": "app-icon-1024.png",
+      "width": 1024,
+      "height": 1024,
+      "format": "PNG",
+      "mode": "RGB",
+      "alpha": false,
+      "bytes": 12066
+    },
+    {
+      "file": "iphone-medium/01-day-timeline.png",
+      "width": 1206,
+      "height": 2622,
+      "format": "PNG",
+      "mode": "RGB",
+      "alpha": false,
+      "bytes": 344271
+    },
+    {
+      "file": "iphone-medium/02-quick-compose.png",
+      "width": 1206,
+      "height": 2622,
+      "format": "PNG",
+      "mode": "RGB",
+      "alpha": false,
+      "bytes": 177453
+    },
+    {
+      "file": "iphone-medium/03-month-calendar.png",
+      "width": 1206,
+      "height": 2622,
+      "format": "PNG",
+      "mode": "RGB",
+      "alpha": false,
+      "bytes": 176965
+    },
+    {
+      "file": "iphone-medium/04-record-search.png",
+      "width": 1206,
+      "height": 2622,
+      "format": "PNG",
+      "mode": "RGB",
+      "alpha": false,
+      "bytes": 347975
+    },
+    {
+      "file": "ipad-13/01-day-timeline.png",
+      "width": 2064,
+      "height": 2752,
+      "format": "PNG",
+      "mode": "RGB",
+      "alpha": false,
+      "bytes": 349612
+    },
+    {
+      "file": "ipad-13/02-quick-compose.png",
+      "width": 2064,
+      "height": 2752,
+      "format": "PNG",
+      "mode": "RGB",
+      "alpha": false,
+      "bytes": 240299
+    },
+    {
+      "file": "ipad-13/03-month-calendar.png",
+      "width": 2064,
+      "height": 2752,
+      "format": "PNG",
+      "mode": "RGB",
+      "alpha": false,
+      "bytes": 148602
+    },
+    {
+      "file": "ipad-13/04-record-search.png",
+      "width": 2064,
+      "height": 2752,
+      "format": "PNG",
+      "mode": "RGB",
+      "alpha": false,
+      "bytes": 311732
+    }
+  ]
+}
