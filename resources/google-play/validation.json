@@ -1,0 +1,89 @@
+{
+  "status": "complete",
+  "completed": [
+    {
+      "file": "app-icon-512.png",
+      "dimensions": [
+        512,
+        512
+      ],
+      "mode": "RGBA",
+      "png_bit_depth": 8,
+      "png_color_type": 6,
+      "bytes": 10866,
+      "passed": true
+    },
+    {
+      "file": "feature-graphic-1024x500.png",
+      "dimensions": [
+        1024,
+        500
+      ],
+      "mode": "RGB",
+      "png_bit_depth": 8,
+      "png_color_type": 2,
+      "bytes": 585363,
+      "passed": true
+    },
+    {
+      "file": "01-day-timeline-1080x1920.png",
+      "dimensions": [
+        1080,
+        1920
+      ],
+      "mode": "RGB",
+      "png_bit_depth": 8,
+      "png_color_type": 2,
+      "bytes": 270891,
+      "passed": true
+    },
+    {
+      "file": "02-quick-compose-1080x1920.png",
+      "dimensions": [
+        1080,
+        1920
+      ],
+      "mode": "RGB",
+      "png_bit_depth": 8,
+      "png_color_type": 2,
+      "bytes": 150306,
+      "passed": true
+    },
+    {
+      "file": "03-month-calendar-1080x1920.png",
+      "dimensions": [
+        1080,
+        1920
+      ],
+      "mode": "RGB",
+      "png_bit_depth": 8,
+      "png_color_type": 2,
+      "bytes": 143560,
+      "passed": true
+    },
+    {
+      "file": "04-record-search-1080x1920.png",
+      "dimensions": [
+        1080,
+        1920
+      ],
+      "mode": "RGB",
+      "png_bit_depth": 8,
+      "png_color_type": 2,
+      "bytes": 262505,
+      "passed": true
+    }
+  ],
+  "pending": [],
+  "checks": {
+    "npm run check": "passed",
+    "npm run typecheck": "passed",
+    "git diff --check": "passed",
+    "isolated_android_release_build": "passed",
+    "visual_review": "passed"
+  },
+  "device": "Samsung Galaxy S23 Ultra (Android)",
+  "limitations": [
+    "iOS 실기기 검증은 수행하지 않음"
+  ]
+}

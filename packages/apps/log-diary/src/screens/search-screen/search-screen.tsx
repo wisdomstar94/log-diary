@@ -40,6 +40,7 @@ export function SearchScreen() {
           onChangeText={setQuery}
           autoFocus
           returnKeyType="search"
+          underlineColorAndroid="transparent"
           placeholder="기록 검색"
           placeholderTextColor={theme.colors.faint}
           style={[
@@ -88,11 +89,15 @@ const styles = StyleSheet.create({
   },
   input: {
     flex: 1,
-    height: 44,
+    minHeight: 44,
     borderWidth: 1,
     paddingHorizontal: 14,
+    paddingVertical: 0,
+    textAlignVertical: "center",
     fontFamily: FONT_FAMILY.sans[400],
     fontSize: 16,
+    lineHeight: 20,
+    includeFontPadding: false,
   },
   meta: {
     paddingHorizontal: 22,
