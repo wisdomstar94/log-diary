@@ -1,7 +1,7 @@
 {
   "name": "log-diary",
   "main": "index.ts",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "dependencies": {
     "@expo-google-fonts/ibm-plex-mono": "0.4.1",
     "@expo-google-fonts/ibm-plex-sans-kr": "0.4.1",
@@ -13,6 +13,7 @@
     "@log-diary/shared-util": "*",
     "expo": "57.0.27",
     "expo-background-task": "57.0.21",
+    "expo-build-properties": "57.0.22",
     "expo-constants": "57.0.21",
     "expo-device": "57.0.2",
     "expo-file-system": "57.0.7",
