@@ -29,14 +29,16 @@ This repo is an npm workspaces monorepo. Run `npm install` from the root; run Ex
 
 Libraries expose group-level sub exports pointing directly at TypeScript source, e.g. `@log-diary/apps-ui/texts/sample-text` (except `shared-biome-config`, which exports `./base`).
 
+Every Expo CLI command reads `app.config.ts`, which requires `APP_VARIANT` (`local` · `dev` · `prod`). Pass it on the command line, or use the `app:*:<variant>` scripts.
+
 ```bash
-npx expo install <package>  # add every dependency with this — resolves SDK-compatible versions
-npx expo start              # start the dev server
-npm run check               # Biome lint + format check (run from root)
-npm run format              # Biome format --write
-npm run typecheck           # tsc --noEmit in every workspace (run from root)
-npx expo-doctor             # diagnose dependency and config issues
-npx expo install --fix      # fix incompatible package versions
+APP_VARIANT=local npx expo install <package>  # add every dependency with this — resolves SDK-compatible versions
+npm run app:start:local                       # start the dev server (local · dev · prod)
+npm run check                                 # Biome lint + format check (run from root)
+npm run format                                # Biome format --write
+npm run typecheck                             # tsc --noEmit in every workspace (run from root)
+APP_VARIANT=local npx expo-doctor             # diagnose dependency and config issues
+APP_VARIANT=local npx expo install --fix      # fix incompatible package versions
 ```
 
 Run lint and typecheck before declaring any task done.

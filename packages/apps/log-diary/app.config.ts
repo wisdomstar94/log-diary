@@ -1,32 +1,66 @@
-import type { ConfigContext } from "expo/config";
+import type { ConfigContext, ExpoConfig } from "expo/config";
+
+import { getVariantIdentity } from "./config/get-variant-identity/index.ts";
+import { loadVariantEnv } from "./config/load-variant-env/index.ts";
+import { readRequiredEnv } from "./config/read-required-env/index.ts";
+import { withAndroidReleaseSigning } from "./config/with-android-release-signing/index.ts";
 import { version } from "./package.json";
 
-function readRequiredEnv(name: string) {
-  const value = process.env[name] ?? "";
-  if (value === "") {
-    throw new Error(
-      `${name} 가 설정되지 않았습니다. packages/apps/log-diary/.env.example 을 참고해 .env 를 만들어 주세요.`,
-    );
+function readGoogleClientIds(isRequired: boolean) {
+  if (isRequired) {
+    return {
+      webClientId: readRequiredEnv("GOOGLE_WEB_CLIENT_ID"),
+      iosClientId: readRequiredEnv("GOOGLE_IOS_CLIENT_ID"),
+    };
   }
-  return value;
+  return {
+    webClientId: process.env.GOOGLE_WEB_CLIENT_ID ?? "",
+    iosClientId: process.env.GOOGLE_IOS_CLIENT_ID ?? "",
+  };
 }
 
-export default ({ config }: ConfigContext) => {
-  const googleWebClientId = readRequiredEnv("GOOGLE_WEB_CLIENT_ID");
-  const googleIosClientId = readRequiredEnv("GOOGLE_IOS_CLIENT_ID");
-  const googleIosUrlScheme = `com.googleusercontent.apps.${googleIosClientId.replace(".apps.googleusercontent.com", "")}`;
+export default ({ config, projectRoot }: ConfigContext): ExpoConfig => {
+  const variant = loadVariantEnv(projectRoot);
+  // local · dev 는 OAuth 클라이언트가 없어도 Google 연동만 끈 채 실행되게 한다.
+  const googleClientIds = readGoogleClientIds(variant === "prod");
+  const identity = getVariantIdentity(variant, {
+    name: config.name ?? "",
+    bundleIdentifier: config.ios?.bundleIdentifier ?? "",
+    androidPackage: config.android?.package ?? "",
+  });
+  // 플러그인이 Podfile 의 modular_headers 설정도 넣으므로, ID 가 없어도 자리표시 scheme 으로 항상 적용한다.
+  const googleIosClientKey =
+    googleClientIds.iosClientId === ""
+      ? "not-configured"
+      : googleClientIds.iosClientId.replace(".apps.googleusercontent.com", "");
+  const appleTeamId = process.env.APPLE_TEAM_ID ?? "";
 
-  return {
+  return withAndroidReleaseSigning({
     ...config,
+    name: identity.name,
+    slug: config.slug ?? "",
     version,
+    ios: {
+      ...config.ios,
+      bundleIdentifier: identity.bundleIdentifier,
+      ...(appleTeamId === "" ? {} : { appleTeamId }),
+    },
+    android: {
+      ...config.android,
+      package: identity.androidPackage,
+    },
     plugins: [
       ...(config.plugins ?? []),
-      ["react-native-nitro-google-signin", { iosUrlScheme: googleIosUrlScheme }],
+      [
+        "react-native-nitro-google-signin",
+        { iosUrlScheme: `com.googleusercontent.apps.${googleIosClientKey}` },
+      ],
     ],
     extra: {
       ...config.extra,
-      googleWebClientId,
-      googleIosClientId,
+      appVariant: variant,
+      googleWebClientId: googleClientIds.webClientId,
+      googleIosClientId: googleClientIds.iosClientId,
     },
-  };
+  });
 };

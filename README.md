@@ -16,11 +16,36 @@ This repo is an npm workspaces monorepo.
    npm install
    ```
 
-2. Start the app
+2. Start the app (pick an environment — see below)
 
    ```bash
-   npm start
+   npm run app:start:local
    ```
+
+### Environments (local · dev · prod)
+
+`APP_VARIANT` picks the environment. It is required: any Expo command run without it stops with an error, so use the scripts below.
+
+| APP_VARIANT | App name | Bundle id / package |
+| --- | --- | --- |
+| `local` | 로그일기 Local | `com.wisdomstar94.logdiary.local` |
+| `dev` | 로그일기 Dev | `com.wisdomstar94.logdiary.dev` |
+| `prod` | 로그일기 | `com.wisdomstar94.logdiary` |
+
+Copy `packages/apps/log-diary/envs/example.env` to `envs/<variant>.env` and fill it in. Values already set in the shell or CI override the file.
+
+| Situation | Command (from the repo root, `<v>` = local · dev · prod) |
+| --- | --- |
+| Expo Go, or attach to an installed dev build | `npm run app:start:<v>` |
+| Web | `npm run app:web:<v>` |
+| Install a dev build on a simulator/device | `npm run app:ios:<v>` · `npm run app:android:<v>` |
+| Run a Release build on a simulator/device | `npm run app:ios:<v>:release` · `npm run app:android:<v>:release` |
+| Store artifacts (IPA · AAB) | `npm run app:build:ios:<v>` · `npm run app:build:android:<v>` |
+
+- `ios:*` · `android:*` · `build:*` run `expo prebuild --clean` first, because `expo run` keeps an existing native folder and would build it with the previous variant's bundle id.
+- A dev build loads its JS config from the dev server, so start the same variant you installed (`app:ios:dev` → `app:start:dev`).
+- `build:ios:*` needs `APPLE_TEAM_ID`; set the `APP_STORE_CONNECT_API_*` keys to sign without an Xcode login (CI). Output : `packages/apps/log-diary/build/release/ios/`.
+- `build:android:*` needs the four `LOG_DIARY_UPLOAD_*` keys. Output : `packages/apps/log-diary/android/app/build/outputs/bundle/release/app-release.aab`.
 
 In the output, you'll find options to open the app in a
 

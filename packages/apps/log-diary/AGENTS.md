@@ -29,5 +29,7 @@
 - Change a manager's state only through its `change*` function and pass `{ from }` to describe the caller.
 - Define background tasks (`TaskManager.defineTask`) in the entry file `index.ts`, which loads before `expo-router/entry` runs the app.
 - Load native-only modules (`react-native-nitro-google-signin`, `expo-widgets`) with a dynamic `import()` and skip them in Expo Go, so the app still runs there.
-- Add Expo/RN dependencies with `npx expo install <package>` from this directory, then pin the exact version in `package.json`.
+- Select the environment with `APP_VARIANT` (`local` · `dev` · `prod`, required — no default). Put per-environment values in `envs/<variant>.env`, list every key in `envs/example.env`, and pass values to app code through `extra` in `app.config.ts`. Read the current environment in app code from `@/constants/app-variant`.
+- Keep `app.config.ts`, `config/`, and `scripts/` Node-only: import local files with the full `.ts` path (for example `./config/load-variant-env/index.ts`) and type-check them with `tsconfig.node.json` (linked from `tsconfig.json` through `references`, so the editor picks it up). Keep these files from importing `src/`; when they need the variant list, use `config/app-variants/` and keep it in sync with `src/types/app-variant/`.
+- Add Expo/RN dependencies with `APP_VARIANT=local npx expo install <package>` from this directory, then pin the exact version in `package.json`.
 - Reference internal packages with `"*"`.
