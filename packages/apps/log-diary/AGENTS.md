@@ -7,7 +7,7 @@
 
 ## Conventions
 
-- Whenever you increase `version` in `packages/apps/log-diary/package.json`, also increment `expo.ios.buildNumber` in `packages/apps/log-diary/app.json` by 1 in the same change. Keep the build number as a numeric string (for example, `"2"` → `"3"`).
+- Whenever you increase `version` in `packages/apps/log-diary/package.json`, also increment `expo.ios.buildNumber` and `expo.android.versionCode` in `packages/apps/log-diary/app.json` by 1 in the same change, keeping the two equal. Keep the build number as a numeric string and the version code as an integer (for example, `"2"` → `"3"` and `2` → `3`).
 - Put non-route code (components, hooks, utils) in `src/`, outside `src/app/`.
 - Keep each screen route file in `src/app/` (every file except `_layout.tsx`) to a single re-export of a screen from `src/screens/<name>-screen/`; put the screen's parts in that folder's `_components/` and `_hooks/`.
 - Put each piece of `src/` in the folder that matches its role:

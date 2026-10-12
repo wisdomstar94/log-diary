@@ -10,9 +10,18 @@
       "supportsTablet": true,
       "buildNumber": "2",
       "icon": "./assets/images/icon.png",
-      "bundleIdentifier": "com.wisdomstar94.logdiary"
+      "bundleIdentifier": "com.wisdomstar94.logdiary",
+      "config": {
+        "usesNonExemptEncryption": false
+      }
     },
     "android": {
+      "versionCode": 2,
+      "blockedPermissions": [
+        "android.permission.SYSTEM_ALERT_WINDOW",
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.WRITE_EXTERNAL_STORAGE"
+      ],
       "adaptiveIcon": {
         "backgroundColor": "#b05139",
         "foregroundImage": "./assets/images/android-icon-foreground.png",
