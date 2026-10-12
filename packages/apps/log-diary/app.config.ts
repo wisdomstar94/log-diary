@@ -1,6 +1,6 @@
 import type { ConfigContext, ExpoConfig } from "expo/config";
 
-import { getVariantIdentity } from "./config/get-variant-identity/index.ts";
+import { getVariantName } from "./config/get-variant-name/index.ts";
 import { loadVariantEnv } from "./config/load-variant-env/index.ts";
 import { readRequiredEnv } from "./config/read-required-env/index.ts";
 import { withAndroidReleaseSigning } from "./config/with-android-release-signing/index.ts";
@@ -23,11 +23,6 @@ export default ({ config, projectRoot }: ConfigContext): ExpoConfig => {
   const variant = loadVariantEnv(projectRoot);
   // local · dev 는 OAuth 클라이언트가 없어도 Google 연동만 끈 채 실행되게 한다.
   const googleClientIds = readGoogleClientIds(variant === "prod");
-  const identity = getVariantIdentity(variant, {
-    name: config.name ?? "",
-    bundleIdentifier: config.ios?.bundleIdentifier ?? "",
-    androidPackage: config.android?.package ?? "",
-  });
   // 플러그인이 Podfile 의 modular_headers 설정도 넣으므로, ID 가 없어도 자리표시 scheme 으로 항상 적용한다.
   const googleIosClientKey =
     googleClientIds.iosClientId === ""
@@ -37,17 +32,12 @@ export default ({ config, projectRoot }: ConfigContext): ExpoConfig => {
 
   return withAndroidReleaseSigning({
     ...config,
-    name: identity.name,
+    name: getVariantName(variant, config.name ?? ""),
     slug: config.slug ?? "",
     version,
     ios: {
       ...config.ios,
-      bundleIdentifier: identity.bundleIdentifier,
       ...(appleTeamId === "" ? {} : { appleTeamId }),
-    },
-    android: {
-      ...config.android,
-      package: identity.androidPackage,
     },
     plugins: [
       ...(config.plugins ?? []),
