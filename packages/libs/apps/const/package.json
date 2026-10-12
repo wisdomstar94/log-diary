@@ -1,0 +1,25 @@
+{
+  "name": "@log-diary/apps-const",
+  "version": "0.0.0",
+  "private": true,
+  "exports": {
+    "./platforms/*": "./src/platforms/*/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "lint": "biome lint .",
+    "format": "biome format --write .",
+    "check": "biome check ."
+  },
+  "peerDependencies": {
+    "react": "19.2.3",
+    "react-native": "0.86.3"
+  },
+  "devDependencies": {
+    "@log-diary/shared-biome-config": "*",
+    "@types/react": "19.2.18",
+    "react": "19.2.3",
+    "react-native": "0.86.3",
+    "typescript": "6.0.3"
+  }
+}

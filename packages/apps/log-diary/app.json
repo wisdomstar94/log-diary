@@ -1,0 +1,67 @@
+{
+  "expo": {
+    "name": "로그일기",
+    "slug": "log-diary",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "scheme": "logdiary",
+    "userInterfaceStyle": "light",
+    "ios": {
+      "supportsTablet": true,
+      "buildNumber": "2",
+      "icon": "./assets/images/icon.png",
+      "bundleIdentifier": "com.wisdomstar94.logdiary"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#b05139",
+        "foregroundImage": "./assets/images/android-icon-foreground.png",
+        "monochromeImage": "./assets/images/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": false,
+      "package": "com.wisdomstar94.logdiary"
+    },
+    "web": {
+      "output": "static",
+      "favicon": "./assets/images/favicon.png"
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#f5f3ef",
+          "image": "./assets/images/splash-icon.png",
+          "resizeMode": "contain",
+          "imageWidth": 76
+        }
+      ],
+      "expo-sqlite",
+      "expo-sharing",
+      "expo-background-task",
+      [
+        "expo-widgets",
+        {
+          "widgets": [
+            {
+              "name": "QuickWriteWidget",
+              "displayName": "일기 바로 작성",
+              "description": "누르면 빠른 기록이 열립니다",
+              "ios": {
+                "supportedFamilies": [
+                  "accessoryRectangular",
+                  "accessoryCircular",
+                  "accessoryInline"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true,
+      "reactCompiler": true
+    }
+  }
+}

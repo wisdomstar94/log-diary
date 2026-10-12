@@ -1,0 +1,30 @@
+{
+  "name": "@log-diary/apps-ui",
+  "version": "0.0.0",
+  "private": true,
+  "exports": {
+    "./texts/*": "./src/texts/*/index.ts",
+    "./links/*": "./src/links/*/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "lint": "biome lint .",
+    "format": "biome format --write .",
+    "check": "biome check ."
+  },
+  "peerDependencies": {
+    "expo-router": "57.0.25",
+    "expo-web-browser": "57.0.3",
+    "react": "19.2.3",
+    "react-native": "0.86.3"
+  },
+  "devDependencies": {
+    "@log-diary/shared-biome-config": "*",
+    "@types/react": "19.2.18",
+    "expo-router": "57.0.25",
+    "expo-web-browser": "57.0.3",
+    "react": "19.2.3",
+    "react-native": "0.86.3",
+    "typescript": "6.0.3"
+  }
+}
