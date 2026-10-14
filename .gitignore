@@ -38,6 +38,11 @@ logs
 packages/apps/*/envs/*.env
 !packages/apps/*/envs/example.env
 
+# Next.js
+.next/
+packages/webs/*/out/
+next-env.d.ts
+
 # typescript
 *.tsbuildinfo
 

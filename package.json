@@ -6,7 +6,8 @@
     "packages/apps/*",
     "packages/libs/shared/*",
     "packages/libs/apps/*",
-    "packages/libs/apps/turbo-modules/*"
+    "packages/libs/apps/turbo-modules/*",
+    "packages/webs/*"
   ],
   "scripts": {
     "app:start:local": "npm run start:local -w log-diary",
@@ -33,6 +34,8 @@
     "app:build:ios:local": "npm run build:ios:local -w log-diary",
     "app:build:ios:dev": "npm run build:ios:dev -w log-diary",
     "app:build:ios:prod": "npm run build:ios:prod -w log-diary",
+    "web:github-page:dev": "npm run dev -w github-page",
+    "web:github-page:build": "npm run build -w github-page",
     "lint": "npm run lint --workspaces --if-present",
     "typecheck": "npm run typecheck --workspaces --if-present",
     "format": "npm run format --workspaces --if-present",

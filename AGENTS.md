@@ -23,6 +23,7 @@ This repo is an npm workspaces monorepo. Run `npm install` from the root; run Ex
 | `packages/libs/apps/const` | `@log-diary/apps-const` | Reusable constants that depend on React/RN/`expo-*` |
 | `packages/libs/apps/ui` | `@log-diary/apps-ui` | Reusable React Native UI |
 | `packages/libs/apps/util` | `@log-diary/apps-util` | Reusable non-UI helpers (functions, hooks) that depend on React/RN/`expo-*` |
+| `packages/webs/github-page` | `github-page` (Next.js static site) | Public web pages deployed to GitHub Pages (home, privacy policy, support) |
 | `packages/libs/apps/turbo-modules/*` | `@log-diary/turbo-module-<name>` | Custom native modules, one package each |
 
 `libs/shared` holds plain TypeScript code; `libs/apps` holds code that depends on React / React Native / `expo-*`. Each package (and `turbo-modules/`) has its own `AGENTS.md` — read it before adding code there.
