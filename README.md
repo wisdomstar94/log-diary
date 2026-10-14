@@ -1,89 +1,61 @@
-# Welcome to your Expo app 👋
+<p align="center">
+  <img src="packages/webs/github-page/src/assets/images/logo.png" alt="로그일기" width="360" />
+</p>
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+<p align="center">
+  떠오른 생각을 시각과 함께 바로 남기는 타임라인 일기 앱
+</p>
 
-## Get started
+## 목차
 
-This repo is an npm workspaces monorepo.
+- [소개](#소개)
+- [화면](#화면)
+- [주요 기능](#주요-기능)
+- [기록 보관](#기록-보관)
+- [안내 및 문의](#안내-및-문의)
+- [개발](#개발)
+- [License](#license)
 
-- `packages/apps/log-diary` — Expo app
-- `packages/libs/shared/const` — `@log-diary/shared-const`
-- `packages/libs/apps/ui` — `@log-diary/apps-ui`
+## 소개
 
-1. Install dependencies (from the repo root)
+로그일기는 긴 일기 대신, 순간순간 떠오른 생각을 한 줄씩 남기는 일기 앱입니다. 하루의 기록이 시간순으로 쌓이고, 월별 달력과 검색으로 지난 기록을 다시 찾아볼 수 있습니다.
 
-   ```bash
-   npm install
-   ```
+## 화면
 
-2. Start the app (pick an environment — see below)
+<p align="center">
+  <img src="resources/apple-app-store/iphone-medium/01-day-timeline.png" alt="시간순으로 쌓인 하루의 기록" width="24%" />
+  <img src="resources/apple-app-store/iphone-medium/02-quick-compose.png" alt="시각과 함께 생각을 남기는 빠른 기록" width="24%" />
+  <img src="resources/apple-app-store/iphone-medium/03-month-calendar.png" alt="기록한 날과 기록 수를 보여주는 월별 달력" width="24%" />
+  <img src="resources/apple-app-store/iphone-medium/04-record-search.png" alt="지난 기록 검색" width="24%" />
+</p>
 
-   ```bash
-   npm run app:start:local
-   ```
+## 주요 기능
 
-### Environments (local · dev · prod)
+- **하루 타임라인** : 그날 남긴 기록이 시간순으로 쌓입니다
+- **빠른 기록** : 시각과 함께 생각을 바로 적습니다
+- **월별 달력** : 기록한 날과 기록 수를 한눈에 보고, 날짜를 누르면 그날의 기록으로 갑니다
+- **검색** : 기록 내용으로 지난 기록을 찾습니다
+- **앱을 열지 않고 기록**
+  - **iPhone · iPad** : 잠금화면 위젯 「일기 바로 작성」
+  - **Android** : 알림 패널 상시 표시의 「일기 바로 작성」
+- **텍스트로 내보내기** : 이번 달 또는 전체 기록을 `.txt` 파일로 저장하거나 공유합니다
 
-`APP_VARIANT` picks the environment. It is required: any Expo command run without it stops with an error, so use the scripts below.
+## 기록 보관
 
-| APP_VARIANT | App name |
-| --- | --- |
-| `local` | 로그일기 Local |
-| `dev` | 로그일기 Dev |
-| `prod` | 로그일기 |
+- 기록은 **사용 중인 기기 안에** 저장됩니다. 로그일기는 별도의 서버를 운영하지 않으며, 작성한 기록을 개발자가 볼 수 없습니다.
+- Google 계정을 연결하면 **Google 드라이브의 앱 전용 숨김 폴더**에 백업합니다. (매일 자동 · 기록이 바뀔 때마다 · 지금 백업)
+- 새 기기에서 같은 계정을 연결하고 「백업에서 가져오기」를 누르면, 기기의 기록을 지우지 않고 백업과 합칩니다.
 
-Every variant uses the same bundle id / package `com.wisdomstar94.logdiary`, so installing one variant replaces the other on the device and keeps its data.
+## 안내 및 문의
 
-Copy `packages/apps/log-diary/envs/example.env` to `envs/<variant>.env` and fill it in. Values already set in the shell or CI override the file.
+- [개인정보처리방침](https://wisdomstar94.github.io/log-diary/privacy/)
+- [고객지원 · 자주 묻는 질문](https://wisdomstar94.github.io/log-diary/support/)
+- **이메일** : [wisdomstar94@gmail.com](mailto:wisdomstar94@gmail.com)
 
-| Situation | Command (from the repo root, `<v>` = local · dev · prod) |
-| --- | --- |
-| Expo Go, or attach to an installed dev build | `npm run app:start:<v>` |
-| Web | `npm run app:web:<v>` |
-| Install a dev build on a simulator/device | `npm run app:ios:<v>` · `npm run app:android:<v>` |
-| Run a Release build on a simulator/device | `npm run app:ios:<v>:release` · `npm run app:android:<v>:release` |
-| Store artifacts (IPA · AAB) | `npm run app:build:ios:<v>` · `npm run app:build:android:<v>` |
+## 개발
 
-- `ios:*` · `android:*` · `build:*` run `expo prebuild --clean` first, because `expo run` keeps an existing native folder and would build it with the previous variant's config.
-- A dev build loads its JS config from the dev server, so start the same variant you installed (`app:ios:dev` → `app:start:dev`).
-- `build:ios:*` needs `APPLE_TEAM_ID`; set the `APP_STORE_CONNECT_API_*` keys to sign without an Xcode login (CI). Output : `packages/apps/log-diary/build/release/ios/`.
-- `build:android:*` needs the four `LOG_DIARY_UPLOAD_*` keys. Output : `packages/apps/log-diary/android/app/build/outputs/bundle/release/app-release.aab`.
+Expo(React Native) 앱과 정책 페이지를 담은 npm workspaces 모노레포입니다. 설치 · 환경 설정 · 실행 · 빌드 방법은 [docs/DEVELOPMENT.md](docs/DEVELOPMENT.md) 를 참고하세요.
 
-In the output, you'll find options to open the app in a
+## License
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **packages/apps/log-diary/src/app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project -w log-diary
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-### Other setup steps
-
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+[LICENSE](LICENSE)

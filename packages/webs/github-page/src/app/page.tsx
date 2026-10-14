@@ -1,6 +1,13 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import logo from "@/assets/images/logo.png";
+
+export const metadata: Metadata = {
+  verification: {
+    google: "7K_TFDj27gvvO0nhgDcrW5a1a4dqV7nqo9Ty4rJszvA",
+  },
+};
 
 export default function HomePage() {
   return (
